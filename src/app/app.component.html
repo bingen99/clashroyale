@@ -1,0 +1,167 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+    margin-left: 650px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 133px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Añadido para centrar el contenido horizontalmente */
+    background-color: black;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    width: 265px;
+
+    transform: rotate(-10deg);
+    /*Sirve para rotar el logo*/
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: fantasy;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: color 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    /* Sombra del texto */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    /* Sombra del contenedor */
+    animation: glow 1s infinite alternate;
+    background-color: black;
+  }
+
+
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    100% {
+      text-shadow: 0 0 20px rgba(0, 255, 255, 1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+    }
+  }
+
+
+
+
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 36px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+    color: royalblue;
+
+  }
+
+  .footer {
+    margin: 0;
+    font-family: fantasy;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: color 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    /* Sombra del texto */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    /* Sombra del contenedor */
+    background-color: black;
+    animation: glow 1s infinite alternate;
+    bottom: 0;
+  }
+
+  .footer-text {
+    color: #888;
+    font-size: 14px;
+  }
+
+
+
+
+
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img class="logo" src="../assets/images/logo.png" alt="Logo de Clash Royale">
+  <h1 class="titulo">API CLASH ROYALE</h1>
+</div>
+
+
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <p class="footer-text">Copyright: Bingen Aparicio Otazua</p>
+</footer>

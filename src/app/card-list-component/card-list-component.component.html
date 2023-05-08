@@ -1,0 +1,37 @@
+<div class="card-list">
+    <div class="card-section">
+        <h1 class="comun">Cartas Comunes</h1>
+        <div class="card-item" *ngFor="let card of commonCards$ | async" routerLink="/v1/cards/{{ card.id }}">
+            <h2>{{ card.name }}</h2>
+            <img [src]="card.iconUrls.medium" alt="{{ card.name }}">
+            <p>Max Level: {{ card.maxLevel }}</p>
+        </div>
+    </div>
+
+    <div class="card-section">
+        <h1 class="especial">Cartas Especiales</h1>
+        <div class="card-item" *ngFor="let card of specialCards$ | async" routerLink="/v1/cards/{{ card.id }}">
+            <h2>{{ card.name }}</h2>
+            <img [src]="card.iconUrls.medium" alt="{{ card.name }}">
+            <p>Max Level: {{ card.maxLevel }}</p>
+        </div>
+    </div>
+
+    <div class="card-section">
+        <h1 class="epica">Cartas Épicas</h1>
+        <div class="card-item" *ngFor="let card of epicCards$ | async" routerLink="/v1/cards/{{ card.id }}">
+            <h2>{{ card.name }}</h2>
+            <img [src]="card.iconUrls.medium" alt="{{ card.name }}">
+            <p>Max Level: {{ card.maxLevel }}</p>
+        </div>
+    </div>
+
+    <div class="card-section">
+        <h1 class="legendaria">Cartas Legendarias</h1>
+        <div class="card-item" *ngFor="let card of legendaryCards$ | async" routerLink="/v1/cards/{{ card.id }}">
+            <h2>{{ card.name }}</h2>
+            <img [src]="card.iconUrls.medium" alt="{{ card.name }}">
+            <p>Max Level: {{ card.maxLevel }}</p>
+        </div>
+    </div>
+</div>
