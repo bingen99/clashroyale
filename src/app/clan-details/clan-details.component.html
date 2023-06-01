@@ -1,0 +1,24 @@
+<div *ngIf="clanDetails" class="clan-details">
+    <div class="back-container">
+        <button class="back" (click)="goBack()">
+            <img src="../../assets/images/back.png" alt="Volver" class="back-image">
+        </button>
+    </div>
+    <h2>{{ clanDetails.name }}</h2>
+    <div class="clan-details-content">
+        <button class="member-link" (click)="goToClanMembersPage()"
+            [routerLink]="['/v1/clans', clanDetails.tag, 'members']">
+            <strong>Número de miembros:</strong> {{ clanDetails.members }}
+        </button>
+
+        <p><strong>Estado del cofre del clan:</strong> {{ clanDetails.clanChestStatus }}</p>
+        <p><strong>Nivel del cofre del clan:</strong> {{ clanDetails.clanChestLevel }}</p>
+        <p><strong>Puntuación del clan:</strong> {{ clanDetails.clanScore }}</p>
+        <p><strong>Nivel máximo del cofre del clan:</strong> {{ clanDetails.clanChestMaxLevel }}</p>
+        <p><strong>Trofeos de guerra del clan:</strong> {{ clanDetails.clanWarTrophies }}</p>
+        <p><strong>Trofeos requeridos:</strong> {{ clanDetails.requiredTrophies }}</p>
+        <p><strong>Donaciones por semana:</strong> {{ clanDetails.donationsPerWeek }}</p>
+        <p><strong>ID del emblema:</strong> {{ clanDetails.badgeId }}</p>
+        <p><strong>Tipo de clan:</strong> {{ clanDetails.type }}</p>
+    </div>
+</div>

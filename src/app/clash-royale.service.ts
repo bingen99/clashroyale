@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { ApiResponse } from './interfaces/api-response.interface';
 import { Card } from './interfaces/card.interface';
+import { Clan } from './interfaces/ClanDetails.interface';
+import { ClanMember } from './interfaces/ClanDetails.interface';
+import { Tournament } from './interfaces/tournament.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClashRoyaleService {
   private apiBaseUrl = "http://localhost:4200/v1/cards";
+  private ClanUrl = "http://localhost:4200/v1/clans";
+  private tournamentUrl = "http://localhost:4200/v1/tournaments";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,6 +25,8 @@ export class ClashRoyaleService {
   };
 
   constructor(private http: HttpClient) { }
+
+  //CARTAS
 
   getAllCards(): Observable<Card[]> {
     const url = `${this.apiBaseUrl}`;
@@ -55,6 +62,49 @@ export class ClashRoyaleService {
         return throwError('Error en la solicitud.');
       })
     );
+  }
+
+
+  //CLANES
+
+  getAllClansByName(name: string): Observable<Clan[]> {
+    const params = new HttpParams().set('name', name);
+
+    return this.http.get<Clan[]>(`${this.ClanUrl}`, { params });
+  }
+
+  getClanDetails(tag: string): Observable<Clan> {
+    const encodedTag = encodeURIComponent(tag);
+    const url = `/v1/clans/${encodedTag}`;
+
+    return this.http.get<Clan>(url);
+  }
+
+  getClanMembers(tag: string): Observable<ClanMember[]> {
+    const encodedTag = encodeURIComponent(tag);
+    const url = `${this.ClanUrl}/${encodedTag}/members`;
+
+    return this.http.get<{ items: ClanMember[] }>(url).pipe(
+      map(response => response.items),
+      catchError(error => {
+        console.error('Error al obtener los miembros del clan:', error);
+        return throwError('Ocurrió un error al obtener los miembros del clan. Por favor, intenta nuevamente.');
+      })
+    );
+  }
+
+
+  //TORNEOS
+
+  getAllTournaments(searchQuery: string): Observable<Tournament[]> {
+    const params = new HttpParams().set('name', searchQuery);
+
+    return this.http.get<Tournament[]>(this.tournamentUrl, { params })
+  }
+
+  getTournamentByTag(tournamentTag: string): Observable<Tournament> {
+    const url = `${this.tournamentUrl}/${tournamentTag}`;
+    return this.http.get<Tournament>(url);
   }
 
 

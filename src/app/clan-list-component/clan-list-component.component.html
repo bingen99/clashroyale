@@ -1,0 +1,33 @@
+<h1 class="navtitulo">
+    BUSCA EL CLAN QUE DESEES
+    <img src="../../assets/images/buscar.png" alt="Logo" class="logo">
+
+</h1>
+
+
+
+
+
+<div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Buscar clanes...">
+    <button (click)="onSearchClan()">Buscar</button>
+</div>
+
+
+
+<div class="clan-list">
+    <ul>
+        <li *ngFor="let clan of pagedClans">
+            <a [routerLink]="['/v1/clans', '#' + clan.tag.substring(1)]">
+                <h3>{{ clan.name }}</h3>
+                <p>{{ clan.description }}</p>
+                <p>Trofeos necesarios: {{ clan.requiredTrophies }}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="pagination" *ngIf="filteredClans.length > 0">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages.length">&gt;</button>
+</div>

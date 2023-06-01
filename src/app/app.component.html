@@ -41,11 +41,32 @@
     font-weight: 600;
   }
 
+  .toolbar h1.titulo {
+    margin-bottom: 0;
+  }
+
+  .toolbar nav {
+    position: absolute;
+    margin-top: 210px;
+    margin-right: 450px;
+  }
+
+  .toolbar a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+    border: solid black 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  .toolbar a:hover {
+    background-color: #0056b3;
+  }
+
   .toolbar img {
     width: 265px;
-
-    transform: rotate(-10deg);
-    /*Sirve para rotar el logo*/
   }
 
   .titulo {
@@ -61,6 +82,7 @@
     /* Sombra del contenedor */
     animation: glow 1s infinite alternate;
     background-color: black;
+
   }
 
 
@@ -113,6 +135,23 @@
     font-size: 14px;
   }
 
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    height: 40px;
+    padding: 5px;
+
+  }
+
+
+
+
 
 
 
@@ -150,13 +189,17 @@
   }
 </style>
 
-<!-- Toolbar -->
+
 <div class="toolbar" role="banner">
   <img class="logo" src="../assets/images/logo.png" alt="Logo de Clash Royale">
   <h1 class="titulo">API CLASH ROYALE</h1>
+
+  <nav>
+    <a routerLink="/v1/cards">Cartas</a>
+    <a routerLink="/v1/clans">Clanes</a>
+    <a routerLink="/v1/tournaments">Torneos</a>
+  </nav>
 </div>
-
-
 
 <div class="content" role="main">
   <router-outlet></router-outlet>

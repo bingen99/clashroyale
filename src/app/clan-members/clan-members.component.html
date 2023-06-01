@@ -1,0 +1,29 @@
+<div class="toolbar">
+    <h1 class="navtitulo">MIEMBROS DEL CLAN</h1>
+    <div class="back-container">
+        <button class="back" (click)="goBack()">
+            <img src="../../assets/images/back.png" alt="Volver" class="back-image">
+        </button>
+    </div>
+</div>
+
+<div class="member-list">
+    <h1 class="member-title">Miembros del Clan</h1>
+    <ul>
+        <li *ngFor="let member of pagedMembers" class="member-item">
+            <h3>{{ member.name }}</h3>
+            <p>Rol: {{ member.role }}</p>
+            <p>Trofeos: {{ member.trophies }}</p>
+            <p>Puntos de Cofre: {{ member.clanChestPoints }}</p>
+            <p>Tag del jugador: {{ member.tag }}</p>
+            <p>Donaciones: {{ member.donations }}</p>
+            <p>Nivel de Experiencia: {{ member.expLevel }}</p>
+            <p>Última vez Online: {{ formatLastSeen(member.lastSeen) }}</p>
+        </li>
+    </ul>
+</div>
+
+<div class="pagination" *ngIf="clanMembers.length > 0">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages.length">&gt;</button>
+</div>

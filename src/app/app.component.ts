@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClashRoyaleService } from './clash-royale.service';
-import { Card } from './interfaces/card.interface';
+import { Clan } from './interfaces/ClanDetails.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,6 @@ import { Card } from './interfaces/card.interface';
 export class AppComponent {
   title = 'recuperacion';
 
-
-
-  constructor(private clashRoyaleService: ClashRoyaleService) { }
 
 
 }
